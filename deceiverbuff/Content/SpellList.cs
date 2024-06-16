@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BlueprintCore.Blueprints.CustomConfigurators.Classes;
 
 namespace deceiverbuff.Content
 {
@@ -34,9 +35,18 @@ namespace deceiverbuff.Content
             AddToList(6, AbilityRefs.HeroismGreater.Reference.Get());
             AddToList(2, AbilityRefs.FalseLife.Reference.Get());
             AddToList(4, AbilityRefs.FalseLifeGreater.Reference.Get());
-            AddToList(1, AbilityRefs.MagicWeapon.Reference.Get());
-            AddToList(3, AbilityRefs.MagicWeaponGreater.Reference.Get());
+            AddToList(1, AbilityRefs.MagicWeaponPrimary.Reference.Get());
+            AddToList(1, AbilityRefs.MagicWeaponSecondary.Reference.Get());
+            AddToList(3, AbilityRefs.MagicWeaponGreaterPrimary.Reference.Get());
+            AddToList(3, AbilityRefs.MagicWeaponGreaterSecondary.Reference.Get());
             AddToList(3, AbilityRefs.Haste.Reference.Get());
+            AddToList(2, AbilityRefs.ProtectionFromEvilCommunal.Reference.Get());
+            AddToList(2, AbilityRefs.ProtectionFromChaosCommunal.Reference.Get());
+            AddToList(6, AbilityRefs.FormOfTheDragonIGold.Reference.Get());
+            AddToList(6, AbilityRefs.FormOfTheDragonIRed.Reference.Get());
+            AddToList(0, AbilityRefs.AcidSplash.Reference.Get());
+            AddToList(0, AbilityRefs.RayOfFrost.Reference.Get());
+            AddToList(0, AbilityRefs.Jolt.Reference.Get());
             Main.logger.Info("Completed Spelllist Configure");
         }
         public static void  AddToList(int level, BlueprintAbility spell)
