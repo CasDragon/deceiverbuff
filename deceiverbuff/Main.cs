@@ -20,6 +20,7 @@ public static class Main
 {
     internal static Harmony HarmonyInstance;
     internal static UnityModManager.ModEntry.ModLogger log;
+    public static readonly LogWrapper logger = LogWrapper.Get("deceiverbuff");
 
     public static bool Load(UnityModManager.ModEntry modEntry)
     {
@@ -66,6 +67,8 @@ public static class Main
 
                 log.Log("Patching Deceiver progression.");
                 Progression.Configure();
+                log.Log("Patching Deceiver Merging.");
+                Merging.Configure();
             }
             catch (Exception e)
             {

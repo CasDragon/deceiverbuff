@@ -15,9 +15,11 @@ namespace deceiverbuff.Content
         private const string SpellsPerDay = "Deceiver.SpellsPerDay";
         public static void Configure()
         {
+            Main.logger.Info("Starting Progression Configure");
             SpellbookConfigurator.For(SpellbookRefs.MagicDeceiverSpellbook.Reference.Get())
                 .SetSpellsPerDay(GetSpellSlots())
                 .Configure();
+            Main.logger.Info("Completed Progression Configure");
         }
         public static BlueprintSpellsTable GetSpellSlots()
         {

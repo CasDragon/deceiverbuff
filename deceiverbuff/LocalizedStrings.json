@@ -1,0 +1,45 @@
+[
+  {
+    "Key": "Aeon.IncorprateName",
+    "ProcessTemplates": false,
+    "enGB": "Mythic Spellbook"
+  },
+
+  {
+    "Key": "Aeon.IncorprateDisc",
+    "enGB": "At 3rd rank, Aeon receives the ability to cast mythic {g|Encyclopedia:Spell}spells{/g}. They can either choose to take it as part of an existing spellbook, or as a standalone spellbook."
+  },
+
+  {
+    "Key": "Azata.IncorprateName",
+    "ProcessTemplates": false,
+    "enGB": "Mythic Spellbook"
+  },
+
+  {
+    "Key": "Azata.IncorprateDisc",
+    "enGB": "At 3rd rank, Azata receives the ability to cast mythic {g|Encyclopedia:Spell}spells{/g}. They can either choose to take it as part of an existing spellbook, or as a standalone spellbook."
+  },
+
+  {
+    "Key": "Demon.IncorprateName",
+    "ProcessTemplates": false,
+    "enGB": "Mythic Spellbook"
+  },
+
+  {
+    "Key": "Demon.IncorprateDisc",
+    "enGB": "At 3rd rank, Demon receives the ability to cast mythic {g|Encyclopedia:Spell}spells{/g}. They can either choose to take it as part of an existing spellbook, or as a standalone spellbook."
+  },
+
+  {
+    "Key": "Trickster.IncorprateName",
+    "ProcessTemplates": false,
+    "enGB": "Mythic Spellbook"
+  },
+
+  {
+    "Key": "Trickster.IncorprateDisc",
+    "enGB": "At 3rd rank, Trickster receives the ability to cast mythic {g|Encyclopedia:Spell}spells{/g}. They can either choose to take it as part of an existing spellbook, or as a standalone spellbook."
+  }
+]

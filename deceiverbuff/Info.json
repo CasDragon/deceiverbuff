@@ -7,6 +7,6 @@
   "Requirements": [],
   "AssemblyName": "deceiverbuff.dll",
   "EntryMethod": "deceiverbuff.Main.Load",
-  "HomePage": "",
-  "Repository": ""
+  "HomePage": "https://github.com/CasDragon/deceiverbuff",
+  "Repository": "https://github.com/CasDragon/deceiverbuff"
 }
