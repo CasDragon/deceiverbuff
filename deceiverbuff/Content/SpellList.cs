@@ -21,21 +21,22 @@ namespace deceiverbuff.Content
             // cantrips, Black Tentacles, Infernal Healing
             AddToList(6, AbilityRefs.HellfireRay.Reference.Get());
             AddToList(1, AbilityRefs.MagicMissile.Reference.Get());
-            AddToList(9, AbilityRefs.EnergyDrain.Reference.Get());
+            AddToList(6, AbilityRefs.EnergyDrain.Reference.Get());
             AddToList(1, AbilityRefs.IllOmen.Reference.Get());
             AddToList(2, AbilityRefs.Glitterdust.Reference.Get());
-            AddToList(8, AbilityRefs.PolarRay.Reference.Get());
-            AddToList(7, AbilityRefs.WavesOfExhaustion.Reference.Get());
+            AddToList(6, AbilityRefs.PolarRay.Reference.Get());
+            AddToList(6, AbilityRefs.WavesOfExhaustion.Reference.Get());
             AddToList(5, AbilityRefs.WavesOfFatigue.Reference.Get());
             AddToList(6, AbilityRefs.TidalWaveAbility.Reference.Get());
             AddToList(2, AbilityRefs.AngelicAspect.Reference.Get());
-            AddToList(8, AbilityRefs.AngelicAspectGreater.Reference.Get());
+            AddToList(6, AbilityRefs.AngelicAspectGreater.Reference.Get());
             AddToList(3, AbilityRefs.Heroism.Reference.Get());
             AddToList(6, AbilityRefs.HeroismGreater.Reference.Get());
             AddToList(2, AbilityRefs.FalseLife.Reference.Get());
             AddToList(4, AbilityRefs.FalseLifeGreater.Reference.Get());
             AddToList(1, AbilityRefs.MagicWeapon.Reference.Get());
             AddToList(3, AbilityRefs.MagicWeaponGreater.Reference.Get());
+            AddToList(3, AbilityRefs.Haste.Reference.Get());
             Main.logger.Info("Completed Spelllist Configure");
         }
         public static void  AddToList(int level, BlueprintAbility spell)
