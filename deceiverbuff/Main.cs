@@ -69,6 +69,8 @@ public static class Main
                 Progression.Configure();
                 log.Log("Patching Deceiver Merging.");
                 Merging.Configure();
+                log.Log("Patching Deceiver Spell List.");
+                SpellList.Configure();
             }
             catch (Exception e)
             {
