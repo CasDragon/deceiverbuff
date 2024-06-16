@@ -18,7 +18,7 @@ namespace deceiverbuff.Content
         {
             Main.logger.Info("Starting Spelllist Configure");
             // todo
-            // cantrips, Black Tentacles, Infernal Healing, False life/Greater, Heroism/Greater, Magic weapoo/greater
+            // cantrips, Black Tentacles, Infernal Healing
             AddToList(6, AbilityRefs.HellfireRay.Reference.Get());
             AddToList(1, AbilityRefs.MagicMissile.Reference.Get());
             AddToList(9, AbilityRefs.EnergyDrain.Reference.Get());
@@ -30,6 +30,12 @@ namespace deceiverbuff.Content
             AddToList(6, AbilityRefs.TidalWaveAbility.Reference.Get());
             AddToList(2, AbilityRefs.AngelicAspect.Reference.Get());
             AddToList(8, AbilityRefs.AngelicAspectGreater.Reference.Get());
+            AddToList(3, AbilityRefs.Heroism.Reference.Get());
+            AddToList(6, AbilityRefs.HeroismGreater.Reference.Get());
+            AddToList(2, AbilityRefs.FalseLife.Reference.Get());
+            AddToList(4, AbilityRefs.FalseLifeGreater.Reference.Get());
+            AddToList(1, AbilityRefs.MagicWeapon.Reference.Get());
+            AddToList(3, AbilityRefs.MagicWeaponGreater.Reference.Get());
             Main.logger.Info("Completed Spelllist Configure");
         }
         public static void  AddToList(int level, BlueprintAbility spell)
