@@ -22,11 +22,11 @@ namespace deceiverbuff.Content
             // cantrips, Black Tentacles, Infernal Healing
             AddToList(6, AbilityRefs.HellfireRay.Reference.Get());
             AddToList(1, AbilityRefs.MagicMissile.Reference.Get());
-            AddToList(6, AbilityRefs.EnergyDrain.Reference.Get());
+            AddToList(9, AbilityRefs.EnergyDrain.Reference.Get());
             AddToList(1, AbilityRefs.IllOmen.Reference.Get());
             AddToList(2, AbilityRefs.Glitterdust.Reference.Get());
-            AddToList(6, AbilityRefs.PolarRay.Reference.Get());
-            AddToList(6, AbilityRefs.WavesOfExhaustion.Reference.Get());
+            AddToList(8, AbilityRefs.PolarRay.Reference.Get());
+            AddToList(7, AbilityRefs.WavesOfExhaustion.Reference.Get());
             AddToList(5, AbilityRefs.WavesOfFatigue.Reference.Get());
             AddToList(6, AbilityRefs.TidalWaveAbility.Reference.Get());
             AddToList(2, AbilityRefs.AngelicAspect.Reference.Get());
@@ -47,6 +47,10 @@ namespace deceiverbuff.Content
             AddToList(0, AbilityRefs.AcidSplash.Reference.Get());
             AddToList(0, AbilityRefs.RayOfFrost.Reference.Get());
             AddToList(0, AbilityRefs.Jolt.Reference.Get());
+            AddToList(7, AbilityRefs.FormOfTheDragonIIGold.Reference.Get());
+            AddToList(7, AbilityRefs.FormOfTheDragonIIRed.Reference.Get());
+            AddToList(8, AbilityRefs.FormOfTheDragonIIIGold.Reference.Get());
+            AddToList(8, AbilityRefs.FormOfTheDragonIIIRed.Reference.Get());
             Main.logger.Info("Completed Spelllist Configure");
         }
         public static void  AddToList(int level, BlueprintAbility spell)
