@@ -69,14 +69,13 @@ namespace deceiverbuff.Content
         static class CopyScroll_Patch
         {
             [HarmonyPatch(nameof(CopyScroll.CanCopySpell)), HarmonyPostfix]
-            static bool DeceiverScollPatch(BlueprintAbility spell, Spellbook spellbook, ref bool __result)
+            static void DeceiverScollPatch(ref bool __result, BlueprintAbility spell, Spellbook spellbook)
             {
                 Main.logger.Info("Patching CanCopyScroll");
-                if (spellbook.Blueprint.AssetGuid.ToString() is "587066af76a74f47a904bb017697ba08")
+                if (spellbook.Blueprint.AssetGuid == "587066af76a74f47a904bb017697ba08")
                 {
-                    return !spellbook.IsKnown(spell);
+                    __result  = !spellbook.IsKnown(spell);
                 }
-                return __result;
             }
         }
     }
