@@ -22,6 +22,7 @@ namespace deceiverbuff.Content
             Main.logger.Info("Starting Progression Configure");
             SpellbookConfigurator.For(SpellbookRefs.MagicDeceiverSpellbook.Reference.Get())
                 .SetSpellsPerDay(GetSpellSlots())
+                .SetCanCopyScrolls(true)
                 .Configure();
             SpellbookRefs.MagicDeceiverSpellbook.Reference.Get().GetComponent<MagicHackSpellbookComponent>().m_MaxDamageDicesPerAction = [5, 7, 10, 15, 20, 50, 50, 50, 50, 50];
             Main.logger.Info("Completed Progression Configure");

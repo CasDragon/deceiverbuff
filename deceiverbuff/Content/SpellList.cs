@@ -3,6 +3,7 @@ using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Abilities;
 using BlueprintCore.Blueprints.References;
 using Kingmaker.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.Blueprints.Items.Components;
 using Kingmaker.Blueprints.Classes.Spells;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BlueprintCore.Blueprints.CustomConfigurators.Classes;
+using HarmonyLib;
+using Kingmaker.UnitLogic;
+using static Kingmaker.Blueprints.Classes.Spells.SuppressSpellSchool;
 
 namespace deceiverbuff.Content
 {
@@ -19,7 +23,7 @@ namespace deceiverbuff.Content
         {
             Main.logger.Info("Starting Spelllist Configure");
             // todo
-            // cantrips, Black Tentacles, Infernal Healing
+            // Black Tentacles, Infernal Healing
             AddToList(6, AbilityRefs.HellfireRay.Reference.Get());
             AddToList(1, AbilityRefs.MagicMissile.Reference.Get());
             AddToList(9, AbilityRefs.EnergyDrain.Reference.Get());
@@ -59,6 +63,21 @@ namespace deceiverbuff.Content
             AbilityConfigurator.For(spell)
                 .AddToSpellList(level, SpellListRefs.MagicDeceiverSpellList.Reference.Get())
                 .Configure();
+        }
+
+        [HarmonyPatch(typeof(CopyScroll))]
+        static class CopyScroll_Patch
+        {
+            [HarmonyPatch(nameof(CopyScroll.CanCopySpell)), HarmonyPostfix]
+            static bool DeceiverScollPatch(BlueprintAbility spell, Spellbook spellbook, ref bool __result)
+            {
+                Main.logger.Info("Patching CanCopyScroll");
+                if (spellbook.Blueprint.AssetGuid.ToString() is "587066af76a74f47a904bb017697ba08")
+                {
+                    return !spellbook.IsKnown(spell);
+                }
+                return __result;
+            }
         }
     }
 }

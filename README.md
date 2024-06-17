@@ -8,7 +8,8 @@ Changes:
   * Jolt
   * Acid Splash
   * Ray of Frost
-* Adds these spells to the Deceiver spell list
+* Allows basically every scroll to be copied into the Deceiver spell book
+* Adds these spells to the Deceiver spell list (from before I added the scroll copying)
   * Hellfire Ray
   * Magic Missile (doesn't work as well for merging as you would think)
   * Energy Drain
