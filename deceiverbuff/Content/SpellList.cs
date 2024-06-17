@@ -14,6 +14,9 @@ using BlueprintCore.Blueprints.CustomConfigurators.Classes;
 using HarmonyLib;
 using Kingmaker.UnitLogic;
 using static Kingmaker.Blueprints.Classes.Spells.SuppressSpellSchool;
+using Kingmaker.UnitLogic.Abilities;
+using Kingmaker.EntitySystem.Entities;
+using Kingmaker.Items;
 
 namespace deceiverbuff.Content
 {
@@ -75,6 +78,18 @@ namespace deceiverbuff.Content
                 if (spellbook.Blueprint.AssetGuid == "587066af76a74f47a904bb017697ba08")
                 {
                     __result  = !spellbook.IsKnown(spell);
+                }
+            }
+        }
+        [HarmonyPatch(typeof(BlueprintSpellList))]
+        static class LearningScroll_Patch
+        {
+            [HarmonyPatch(nameof(BlueprintSpellList.GetLevel)), HarmonyPostfix]
+            static void DeceiverLearnScroll_Patch(ref int __result, BlueprintSpellList __instance, BlueprintAbility spell)
+            {
+                if (__result == -1)
+                {
+                    __result = spell.GetComponent<SpellListComponent>().SpellLevel;
                 }
             }
         }
