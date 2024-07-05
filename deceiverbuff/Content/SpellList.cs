@@ -17,6 +17,7 @@ using static Kingmaker.Blueprints.Classes.Spells.SuppressSpellSchool;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.Items;
+using BlueprintCore.Blueprints.Configurators.Classes;
 
 namespace deceiverbuff.Content
 {
