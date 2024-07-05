@@ -45,12 +45,12 @@ public static class Main
         HarmonyInstance.UnpatchAll(modEntry.Info.Id);
         return true;
     }
+#endif
     public static bool CheckDLCStatus()
     {
         // Check if user owns DLC 6
-        return DlcRefs.Dlc6.Reference.Get().IsAvailable;
+        return true; //DlcRefs.Dlc6.Reference.Get().IsAvailable;
     }
-#endif
     [HarmonyPatch(typeof(BlueprintsCache))]
     static class BlueprintsCaches_Patch
     {

@@ -18,6 +18,7 @@ using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.Items;
 using BlueprintCore.Blueprints.Configurators.Classes;
+using deceiverbuff.Util;
 
 namespace deceiverbuff.Content
 {
