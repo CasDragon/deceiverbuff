@@ -1,4 +1,5 @@
 ﻿using BlueprintCore.Blueprints.Configurators.Classes;
+using BlueprintCore.Blueprints.CustomConfigurators.Classes;
 using BlueprintCore.Blueprints.References;
 using deceiverbuff.Util;
 using System;
@@ -51,42 +52,58 @@ namespace deceiverbuff.Content
         }
         public static void AddAeon()
         {
-            FeatureSelectMythicSpellbookConfigurator.New(AeonIncorporateName, Guids.AeonSpellbookNew)
+            var thing = FeatureSelectMythicSpellbookConfigurator.New(AeonIncorporateName, Guids.AeonSpellbookNew)
                 .AddToAllowedSpellbooks(SpellbookRefs.MagicDeceiverSpellbook.Reference.Get())
                 .SetDisplayName(AeonIncorporateName)
                 .SetDescription(AeonIncorporateDesc)
                 .SetSpellKnownForSpontaneous(SpellsTableRefs.MythicSpontaneousSpellsKnownTable.Reference.Get())
-                .SetMythicSpellList(SpellsTableRefs.AeonSpellKnownTable.Reference.Get())
+                .SetMythicSpellList(SpellListRefs.AeonSpellMythicList.Reference.Get())
+                .Configure();
+
+            ProgressionConfigurator.For(ProgressionRefs.AeonProgression.Reference.Get())
+                .AddToLevelEntry(1, thing)
                 .Configure();
         }
         public static void AddAzata()
         {
-            FeatureSelectMythicSpellbookConfigurator.New(AzataIncorporateName, Guids.AzataSpellbookNew)
+            var thing = FeatureSelectMythicSpellbookConfigurator.New(AzataIncorporateName, Guids.AzataSpellbookNew)
                 .AddToAllowedSpellbooks(SpellbookRefs.MagicDeceiverSpellbook.Reference.Get())
                 .SetDisplayName(AzataIncorporateName)
                 .SetDescription(AzataIncorporateDesc)
                 .SetSpellKnownForSpontaneous(SpellsTableRefs.MythicSpontaneousSpellsKnownTable.Reference.Get())
-                .SetMythicSpellList(SpellsTableRefs.AzataSpellKnownTable.Reference.Get())
+                .SetMythicSpellList(SpellListRefs.AzataMythicSpelllist.Reference.Get())
+                .Configure();
+
+            ProgressionConfigurator.For(ProgressionRefs.AzataProgression.Reference.Get())
+                .AddToLevelEntry(1, thing)
                 .Configure();
         }
         public static void AddDemon()
         {
-            FeatureSelectMythicSpellbookConfigurator.New(DemonIncorporateName, Guids.DemonSpellbookNew)
+            var thing = FeatureSelectMythicSpellbookConfigurator.New(DemonIncorporateName, Guids.DemonSpellbookNew)
                 .AddToAllowedSpellbooks(SpellbookRefs.MagicDeceiverSpellbook.Reference.Get())
                 .SetDisplayName(DemonIncorporateName)
                 .SetDescription(DemonIncorporateDesc)
                 .SetSpellKnownForSpontaneous(SpellsTableRefs.MythicSpontaneousSpellsKnownTable.Reference.Get())
-                .SetMythicSpellList(SpellsTableRefs.DemonSpellKnownTable.Reference.Get())
+                .SetMythicSpellList(SpellListRefs.DemonSpelllist.Reference.Get())
+                .Configure();
+
+            ProgressionConfigurator.For(ProgressionRefs.DemonProgression.Reference.Get())
+                .AddToLevelEntry(1, thing)
                 .Configure();
         }
         public static void AddTrickster()
         {
-            FeatureSelectMythicSpellbookConfigurator.New(TricksterIncorporateName, Guids.TricksterSpellbookNew)
+            var thing = FeatureSelectMythicSpellbookConfigurator.New(TricksterIncorporateName, Guids.TricksterSpellbookNew)
                 .AddToAllowedSpellbooks(SpellbookRefs.MagicDeceiverSpellbook.Reference.Get())
                 .SetDisplayName(TricksterIncorporateName)
                 .SetDescription(TricksterIncorporateDesc)
                 .SetSpellKnownForSpontaneous(SpellsTableRefs.MythicSpontaneousSpellsKnownTable.Reference.Get())
-                .SetMythicSpellList(SpellsTableRefs.TricksterSpellKnownTable.Reference.Get())
+                .SetMythicSpellList(SpellListRefs.TricksterSpelllistMythic.Reference.Get())
+                .Configure();
+
+            ProgressionConfigurator.For(ProgressionRefs.TricksterProgression.Reference.Get())
+                .AddToLevelEntry(1, thing)
                 .Configure();
         }
     }
