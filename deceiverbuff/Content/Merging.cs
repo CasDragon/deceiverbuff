@@ -71,7 +71,7 @@ namespace deceiverbuff.Content
                 .SetDisplayName(AzataIncorporateName)
                 .SetDescription(AzataIncorporateDesc)
                 .SetSpellKnownForSpontaneous(SpellsTableRefs.MythicSpontaneousSpellsKnownTable.Reference.Get())
-                .SetMythicSpellList(SpellListRefs.AzataMythicSpelllist.Reference.Get())
+                .SetMythicSpellList(SpellListRefs.AzataMythicSpellsSpelllist.Reference.Get())
                 .Configure();
 
             ProgressionConfigurator.For(ProgressionRefs.AzataProgression.Reference.Get())
