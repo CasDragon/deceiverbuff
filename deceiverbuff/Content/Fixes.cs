@@ -22,7 +22,7 @@ namespace deceiverbuff.Content
 
         }
 
-        [HarmonyPatch(typeof(DraconicBloodlineArcana))]
+        /*[HarmonyPatch(typeof(DraconicBloodlineArcana))]
         internal class DraconicBloodline_Patch
         {
             [HarmonyPatch(nameof(DraconicBloodlineArcana.OnEventAboutToTrigger)), HarmonyPrefix]
@@ -38,6 +38,8 @@ namespace deceiverbuff.Content
                 if (!context.SpellDescriptor.HasAnyFlag(__instance.SpellDescriptor))
                 {
                     Main.logger.Info("Merged spell is missing descriptor");
+                    Main.logger.Info("Bloodline is looking for this descriptor - " + __instance.SpellDescriptor.ToString());
+                    Main.logger.Info("Spell contains the following descriptor" + context.SpellDescriptor.ToString());
                     return;
                 }
                 if  (!context.SourceAbility.IsSpell && __instance.SpellsOnly)
@@ -52,6 +54,6 @@ namespace deceiverbuff.Content
                     return;
                 }
             }
-        }
+        }*/
     }
 }
