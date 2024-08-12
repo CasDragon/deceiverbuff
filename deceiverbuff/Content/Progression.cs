@@ -15,6 +15,7 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic;
 using HarmonyLib;
 using static UnityEngine.UI.GridLayoutGroup;
+using System.Linq.Expressions;
 
 namespace deceiverbuff.Content
 {
@@ -47,10 +48,17 @@ namespace deceiverbuff.Content
         [HarmonyPatch(nameof(Spellbook.GetSpellsPerDay)), HarmonyPostfix]
         public static void GetSpellsPerDay_Patch(ref int __result, Spellbook __instance)
         {
-            if (__instance.Blueprint.GetComponent<MagicHackSpellbookComponent>() != null)
+            try
             {
-                ModifiableValueAttributeStat modifiableValueAttributeStat = __instance.Owner.Stats.GetStat(__instance.Blueprint.CastingAttribute) as ModifiableValueAttributeStat;
-                __result = __result + modifiableValueAttributeStat.PermanentBonus; 
+                if (__instance.Blueprint.GetComponent<MagicHackSpellbookComponent>() != null)
+                {
+                    ModifiableValueAttributeStat modifiableValueAttributeStat = __instance.Owner.Stats.GetStat(__instance.Blueprint.CastingAttribute) as ModifiableValueAttributeStat;
+                    __result = __result + modifiableValueAttributeStat.PermanentBonus;
+                }
+            }
+            catch (Exception e)
+            {
+                Main.logger.Error("Error when patching SpellsPerDay - \n" + e);
             }
         }
     }

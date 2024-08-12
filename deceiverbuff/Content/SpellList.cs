@@ -76,10 +76,17 @@ namespace deceiverbuff.Content
             [HarmonyPatch(nameof(CopyScroll.CanCopySpell)), HarmonyPostfix]
             static void DeceiverScollPatch(ref bool __result, BlueprintAbility spell, Spellbook spellbook)
             {
-                Main.logger.Info("Patching CanCopyScroll");
-                if (spellbook.Blueprint.AssetGuid == "587066af76a74f47a904bb017697ba08")
+                try
                 {
-                    __result  = !spellbook.IsKnown(spell);
+                    Main.logger.Info("Patching CanCopyScroll");
+                    if (spellbook.Blueprint.AssetGuid == "587066af76a74f47a904bb017697ba08")
+                    {
+                        __result = !spellbook.IsKnown(spell);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Main.logger.Error("Error while patching CanCopyScroll -\n " + e);
                 }
             }
         }
@@ -89,9 +96,16 @@ namespace deceiverbuff.Content
             [HarmonyPatch(nameof(BlueprintSpellList.GetLevel)), HarmonyPostfix]
             static void DeceiverLearnScroll_Patch(ref int __result, BlueprintSpellList __instance, BlueprintAbility spell)
             {
-                if (__result == -1)
+                try
                 {
-                    __result = spell.GetComponent<SpellListComponent>().SpellLevel;
+                    if (__result == -1)
+                    {
+                        __result = spell.GetComponent<SpellListComponent>().SpellLevel;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Main.logger.Error("Error while patching GetLevel -\n" + e);
                 }
             }
         }
