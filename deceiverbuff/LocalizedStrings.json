@@ -41,5 +41,38 @@
   {
     "Key": "Trickster.IncorprateDisc",
     "enGB": "At 3rd rank, Trickster receives the ability to cast mythic {g|Encyclopedia:Spell}spells{/g}. They can either choose to take it as part of an existing spellbook, or as a standalone spellbook."
+  },
+
+  {
+    "Key": "CheatyBolsterFeature.Name",
+    "ProcessTemplates": false,
+    "enGB": "Deceiver Bolster - Metamagic"
+  },
+
+  {
+    "Key": "CheatyBolsterFeature.Description",
+    "enGB": "Allows the Magical Deceiver to give their spells the Bolster metamagic."
+  },
+
+  {
+    "Key": "CheatyBolsterAbility.Name",
+    "ProcessTemplates": false,
+    "enGB": "Deceiver Bolster - Metamagic"
+  },
+
+  {
+    "Key": "CheatyBolsterAbility.Description",
+    "enGB": "Allows the Magical Deceiver to give their spells the Bolster metamagic."
+  },
+
+  {
+    "Key": "CheatyBolsterBuff.Name",
+    "ProcessTemplates": false,
+    "enGB": "Deceiver Bolster - Metamagic"
+  },
+
+  {
+    "Key": "CheatyBolsterBuff.Description",
+    "enGB": "Allows the Magical Deceiver to give their spells the Bolster metamagic."
   }
 ]

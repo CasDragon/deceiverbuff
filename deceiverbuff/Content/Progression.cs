@@ -53,7 +53,7 @@ namespace deceiverbuff.Content
                 if (__instance.Blueprint.GetComponent<MagicHackSpellbookComponent>() != null)
                 {
                     ModifiableValueAttributeStat modifiableValueAttributeStat = __instance.Owner.Stats.GetStat(__instance.Blueprint.CastingAttribute) as ModifiableValueAttributeStat;
-                    __result = __result + modifiableValueAttributeStat.PermanentBonus;
+                    __result += modifiableValueAttributeStat.PermanentBonus;
                 }
             }
             catch (Exception e)
