@@ -1,6 +1,7 @@
 A mod for Pathfinder: Wrath of the Righteous, which changes the new Magical Deceiver archetype!
 
 Changes:
+* Allows metamagic rods to be used with fused spells
 * Gives full spell level progression (replaced the progression with Wizard spells per day progression)
 * Allow Deceiver spellbook to be merged with every Mythic spellbook
 * Allows merged spell level 7 and higher spells to properly deal damage
@@ -34,4 +35,5 @@ KNOWN ISSUES:
 Future plans:
 * Perhaps spells from other mods? 
 * 10% chance of adding configurable settings
+* Fake Celebrity performances also evolving to move action and swift actions (lvl 8, 13)
 * ???
