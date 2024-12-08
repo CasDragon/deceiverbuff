@@ -1,21 +1,12 @@
 ﻿using BlueprintCore.Blueprints.Configurators.Classes.Spells;
 using BlueprintCore.Blueprints.References;
 using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
 using deceiverbuff.Util;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Abilities;
-using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Blueprints;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic;
 using HarmonyLib;
-using static UnityEngine.UI.GridLayoutGroup;
-using System.Linq.Expressions;
 
 namespace deceiverbuff.Content
 {
@@ -25,11 +16,24 @@ namespace deceiverbuff.Content
         public static void Configure()
         {
             Main.logger.Info("Starting Progression Configure");
-            SpellbookConfigurator.For(SpellbookRefs.MagicDeceiverSpellbook.Reference.Get())
-                .SetSpellsPerDay(GetSpellSlots())
-                .SetCastingAttribute(StatType.Charisma)
-                .SetCanCopyScrolls(true)
-                .Configure();
+            SpellbookConfigurator mdbook = SpellbookConfigurator.For(SpellbookRefs.MagicDeceiverSpellbook.Reference.Get());
+            if (Settings.GetSetting<bool>("extendslots"))
+            {
+                mdbook.SetSpellsPerDay(GetSpellSlots());
+            }
+            if (Settings.GetSetting<bool>("copyscrolls"))
+            {
+                mdbook.SetCanCopyScrolls(true);
+            }
+            if (Settings.GetSetting<bool>("useint"))
+            {
+                mdbook.SetCastingAttribute(StatType.Intelligence);
+            }
+            else
+            {
+                mdbook.SetCastingAttribute(StatType.Charisma);
+            }
+            mdbook.Configure();
             SpellbookRefs.MagicDeceiverSpellbook.Reference.Get().GetComponent<MagicHackSpellbookComponent>().m_MaxDamageDicesPerAction = [5, 7, 10, 15, 20, 50, 50, 50, 50, 50];
             Main.logger.Info("Completed Progression Configure");
         }
@@ -48,17 +52,23 @@ namespace deceiverbuff.Content
         [HarmonyPatch(nameof(Spellbook.GetSpellsPerDay)), HarmonyPostfix]
         public static void GetSpellsPerDay_Patch(ref int __result, Spellbook __instance)
         {
-            try
+            if (Settings.GetSetting<bool>("extendperday"))
             {
-                if (__instance.Blueprint.GetComponent<MagicHackSpellbookComponent>() != null)
+                if (Settings.GetSetting<bool>("cheatyperday"))
                 {
-                    ModifiableValueAttributeStat modifiableValueAttributeStat = __instance.Owner.Stats.GetStat(__instance.Blueprint.CastingAttribute) as ModifiableValueAttributeStat;
-                    __result += modifiableValueAttributeStat.PermanentBonus;
+                    try
+                    {
+                        if (__instance.Blueprint.GetComponent<MagicHackSpellbookComponent>() != null)
+                        {
+                            ModifiableValueAttributeStat modifiableValueAttributeStat = __instance.Owner.Stats.GetStat(__instance.Blueprint.CastingAttribute) as ModifiableValueAttributeStat;
+                            __result += modifiableValueAttributeStat.PermanentBonus;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        //Main.logger.Error("Error when patching SpellsPerDay - \n" + e);
+                    }
                 }
-            }
-            catch (Exception e)
-            {
-                Main.logger.Error("Error when patching SpellsPerDay - \n" + e);
             }
         }
     }

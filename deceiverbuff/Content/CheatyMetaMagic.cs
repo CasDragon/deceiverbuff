@@ -49,15 +49,18 @@ namespace deceiverbuff.Content
         [HarmonyPostfix]
         public static void IsSuitableAbility_Patch(ref bool __result, AbilityData ability)
         {
-            Main.logger.Verbose("Patching MetamagicRodMechanics.IsSuitableAbility");
-            try
+            if (Settings.GetSetting<bool>("rodmetamagic"))
             {
-                if (ability.MagicHackData is not null)
-                    __result = true;
-            }
-            catch (Exception e)
-            {
-                Main.logger.Error("Error when patching IsSuitableAbility - \n" + e);
+                Main.logger.Verbose("Patching MetamagicRodMechanics.IsSuitableAbility");
+                try
+                {
+                    if (ability.MagicHackData is not null)
+                        __result = true;
+                }
+                catch (Exception e)
+                {
+                    Main.logger.Error("Error when patching IsSuitableAbility - \n" + e);
+                }
             }
         }
     }

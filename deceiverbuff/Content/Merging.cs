@@ -2,11 +2,6 @@
 using BlueprintCore.Blueprints.CustomConfigurators.Classes;
 using BlueprintCore.Blueprints.References;
 using deceiverbuff.Util;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace deceiverbuff.Content
 {
@@ -23,20 +18,35 @@ namespace deceiverbuff.Content
 
         public static void Configure()
         {
-            Main.logger.Info("Starting Merging Configure");
-            Main.logger.Verbose("Adding Aeon Incorporate");
-            AddAeon();
-            Main.logger.Verbose("Adding Angel Incorporate");
-            AddAngel();
-            Main.logger.Verbose("Adding Azata Incorporate");
-            AddAzata();
-            Main.logger.Verbose("Adding Demon Incorporate");
-            AddDemon();
-            Main.logger.Verbose("Adding Lich Incorporate");
-            AddLich();
-            Main.logger.Verbose("Adding Trickster Incorporate");
-            AddTrickster();
-            Main.logger.Info("Completed Merging Configure");
+            if (Settings.GetSetting<bool>("mergingsettings"))
+            {
+                Main.logger.Info("Starting Merging Configure");
+                Main.logger.Verbose("Adding Aeon Incorporate");
+                AddAeon();
+                Main.logger.Verbose("Adding Angel Incorporate");
+                AddAngel();
+                Main.logger.Verbose("Adding Azata Incorporate");
+                AddAzata();
+                Main.logger.Verbose("Adding Demon Incorporate");
+                AddDemon();
+                Main.logger.Verbose("Adding Lich Incorporate");
+                AddLich();
+                Main.logger.Verbose("Adding Trickster Incorporate");
+                AddTrickster();
+                Main.logger.Info("Completed Merging Configure");
+            }
+            else
+            {
+                Main.logger.Info("Merging disabled, configuring disabled");
+                AddDisabledBooks();
+            }
+        }
+        public static void AddDisabledBooks()
+        {
+            FeatureSelectMythicSpellbookConfigurator.New(AeonIncorporateName, Guids.AeonSpellbookNew).Configure();
+            FeatureSelectMythicSpellbookConfigurator.New(AzataIncorporateName, Guids.AzataSpellbookNew).Configure();
+            FeatureSelectMythicSpellbookConfigurator.New(DemonIncorporateName, Guids.DemonSpellbookNew).Configure();
+            FeatureSelectMythicSpellbookConfigurator.New(TricksterIncorporateName, Guids.TricksterSpellbookNew).Configure();
         }
         public static void AddAngel()
         {

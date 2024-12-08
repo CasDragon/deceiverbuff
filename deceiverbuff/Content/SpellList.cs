@@ -1,23 +1,12 @@
-﻿using BlueprintCore.Blueprints.CustomConfigurators.Classes.Spells;
-using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Abilities;
+﻿using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Abilities;
 using BlueprintCore.Blueprints.References;
 using Kingmaker.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.Blueprints.Items.Components;
 using Kingmaker.Blueprints.Classes.Spells;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BlueprintCore.Blueprints.CustomConfigurators.Classes;
 using HarmonyLib;
 using Kingmaker.UnitLogic;
-using static Kingmaker.Blueprints.Classes.Spells.SuppressSpellSchool;
-using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.EntitySystem.Entities;
-using Kingmaker.Items;
-using BlueprintCore.Blueprints.Configurators.Classes;
 using deceiverbuff.Util;
 
 namespace deceiverbuff.Content
@@ -29,37 +18,40 @@ namespace deceiverbuff.Content
             Main.logger.Info("Starting Spelllist Configure");
             // todo
             // Black Tentacles, Infernal Healing
-            AddToList(6, AbilityRefs.HellfireRay.Reference.Get());
-            AddToList(1, AbilityRefs.MagicMissile.Reference.Get());
-            AddToList(9, AbilityRefs.EnergyDrain.Reference.Get());
-            AddToList(1, AbilityRefs.IllOmen.Reference.Get());
-            AddToList(2, AbilityRefs.Glitterdust.Reference.Get());
-            AddToList(8, AbilityRefs.PolarRay.Reference.Get());
-            AddToList(7, AbilityRefs.WavesOfExhaustion.Reference.Get());
-            AddToList(5, AbilityRefs.WavesOfFatigue.Reference.Get());
-            AddToList(6, AbilityRefs.TidalWaveAbility.Reference.Get());
-            AddToList(2, AbilityRefs.AngelicAspect.Reference.Get());
-            AddToList(6, AbilityRefs.AngelicAspectGreater.Reference.Get());
-            AddToList(3, AbilityRefs.Heroism.Reference.Get());
-            AddToList(6, AbilityRefs.HeroismGreater.Reference.Get());
-            AddToList(2, AbilityRefs.FalseLife.Reference.Get());
-            AddToList(4, AbilityRefs.FalseLifeGreater.Reference.Get());
-            AddToList(1, AbilityRefs.MagicWeaponPrimary.Reference.Get());
-            AddToList(1, AbilityRefs.MagicWeaponSecondary.Reference.Get());
-            AddToList(3, AbilityRefs.MagicWeaponGreaterPrimary.Reference.Get());
-            AddToList(3, AbilityRefs.MagicWeaponGreaterSecondary.Reference.Get());
-            AddToList(3, AbilityRefs.Haste.Reference.Get());
-            AddToList(2, AbilityRefs.ProtectionFromEvilCommunal.Reference.Get());
-            AddToList(2, AbilityRefs.ProtectionFromChaosCommunal.Reference.Get());
-            AddToList(6, AbilityRefs.FormOfTheDragonIGold.Reference.Get());
-            AddToList(6, AbilityRefs.FormOfTheDragonIRed.Reference.Get());
-            AddToList(0, AbilityRefs.AcidSplash.Reference.Get());
-            AddToList(0, AbilityRefs.RayOfFrost.Reference.Get());
-            AddToList(0, AbilityRefs.Jolt.Reference.Get());
-            AddToList(7, AbilityRefs.FormOfTheDragonIIGold.Reference.Get());
-            AddToList(7, AbilityRefs.FormOfTheDragonIIRed.Reference.Get());
-            AddToList(8, AbilityRefs.FormOfTheDragonIIIGold.Reference.Get());
-            AddToList(8, AbilityRefs.FormOfTheDragonIIIRed.Reference.Get());
+            if (Settings.GetSetting<bool>("addnewspells"))
+            {
+                AddToList(6, AbilityRefs.HellfireRay.Reference.Get());
+                AddToList(1, AbilityRefs.MagicMissile.Reference.Get());
+                AddToList(9, AbilityRefs.EnergyDrain.Reference.Get());
+                AddToList(1, AbilityRefs.IllOmen.Reference.Get());
+                AddToList(2, AbilityRefs.Glitterdust.Reference.Get());
+                AddToList(8, AbilityRefs.PolarRay.Reference.Get());
+                AddToList(7, AbilityRefs.WavesOfExhaustion.Reference.Get());
+                AddToList(5, AbilityRefs.WavesOfFatigue.Reference.Get());
+                AddToList(6, AbilityRefs.TidalWaveAbility.Reference.Get());
+                AddToList(2, AbilityRefs.AngelicAspect.Reference.Get());
+                AddToList(6, AbilityRefs.AngelicAspectGreater.Reference.Get());
+                AddToList(3, AbilityRefs.Heroism.Reference.Get());
+                AddToList(6, AbilityRefs.HeroismGreater.Reference.Get());
+                AddToList(2, AbilityRefs.FalseLife.Reference.Get());
+                AddToList(4, AbilityRefs.FalseLifeGreater.Reference.Get());
+                AddToList(1, AbilityRefs.MagicWeaponPrimary.Reference.Get());
+                AddToList(1, AbilityRefs.MagicWeaponSecondary.Reference.Get());
+                AddToList(3, AbilityRefs.MagicWeaponGreaterPrimary.Reference.Get());
+                AddToList(3, AbilityRefs.MagicWeaponGreaterSecondary.Reference.Get());
+                AddToList(3, AbilityRefs.Haste.Reference.Get());
+                AddToList(2, AbilityRefs.ProtectionFromEvilCommunal.Reference.Get());
+                AddToList(2, AbilityRefs.ProtectionFromChaosCommunal.Reference.Get());
+                AddToList(6, AbilityRefs.FormOfTheDragonIGold.Reference.Get());
+                AddToList(6, AbilityRefs.FormOfTheDragonIRed.Reference.Get());
+                AddToList(0, AbilityRefs.AcidSplash.Reference.Get());
+                AddToList(0, AbilityRefs.RayOfFrost.Reference.Get());
+                AddToList(0, AbilityRefs.Jolt.Reference.Get());
+                AddToList(7, AbilityRefs.FormOfTheDragonIIGold.Reference.Get());
+                AddToList(7, AbilityRefs.FormOfTheDragonIIRed.Reference.Get());
+                AddToList(8, AbilityRefs.FormOfTheDragonIIIGold.Reference.Get());
+                AddToList(8, AbilityRefs.FormOfTheDragonIIIRed.Reference.Get());
+            }
             Main.logger.Info("Completed Spelllist Configure");
         }
         public static void  AddToList(int level, BlueprintAbility spell)
@@ -76,17 +68,20 @@ namespace deceiverbuff.Content
             [HarmonyPatch(nameof(CopyScroll.CanCopySpell)), HarmonyPostfix]
             static void DeceiverScollPatch(ref bool __result, BlueprintAbility spell, Spellbook spellbook)
             {
-                try
+                if (Settings.GetSetting<bool>("copyscrolls"))
                 {
-                    Main.logger.Info("Patching CanCopyScroll");
-                    if (spellbook.Blueprint.AssetGuid == "587066af76a74f47a904bb017697ba08")
+                    try
                     {
-                        __result = !spellbook.IsKnown(spell);
+                        Main.logger.Info("Patching CanCopyScroll");
+                        if (spellbook.Blueprint.AssetGuid == "587066af76a74f47a904bb017697ba08")
+                        {
+                            __result = !spellbook.IsKnown(spell);
+                        }
                     }
-                }
-                catch (Exception e)
-                {
-                    Main.logger.Error("Error while patching CanCopyScroll -\n " + e);
+                    catch (Exception e)
+                    {
+                        //Main.logger.Error("Error while patching CanCopyScroll -\n " + e);
+                    }
                 }
             }
         }
@@ -96,16 +91,19 @@ namespace deceiverbuff.Content
             [HarmonyPatch(nameof(BlueprintSpellList.GetLevel)), HarmonyPostfix]
             static void DeceiverLearnScroll_Patch(ref int __result, BlueprintSpellList __instance, BlueprintAbility spell)
             {
-                try
+                if (Settings.GetSetting<bool>("copyscrolls"))
                 {
-                    if (__result == -1)
+                    try
                     {
-                        __result = spell.GetComponent<SpellListComponent>().SpellLevel;
+                        if (__result == -1)
+                        {
+                            __result = spell.GetComponent<SpellListComponent>().SpellLevel;
+                        }
                     }
-                }
-                catch (Exception e)
-                {
-                    Main.logger.Error("Error while patching GetLevel -\n" + e);
+                    catch (Exception e)
+                    {
+                        //Main.logger.Error("Error while patching GetLevel -\n" + e);
+                    }
                 }
             }
         }

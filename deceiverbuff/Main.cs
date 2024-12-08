@@ -11,6 +11,9 @@ using Kingmaker.PubSubSystem;
 using BlueprintCore.Utils;
 using Kingmaker.Blueprints.JsonSystem;
 using BlueprintCore.Blueprints.References;
+using static UnityModManagerNet.UnityModManager;
+using deceiverbuff.Util;
+using UnityEngine;
 
 namespace deceiverbuff;
 
@@ -21,31 +24,32 @@ public static class Main
 {
     internal static Harmony HarmonyInstance;
     public static readonly LogWrapper logger = LogWrapper.Get("deceiverbuff");
+    internal static ModEntry entry;
+    //public static Settings settings;
 
-    public static bool Load(UnityModManager.ModEntry modEntry)
+    public static bool Load(ModEntry modEntry)
     {
 #if DEBUG
         modEntry.OnUnload = OnUnload;
 #endif
+        entry = modEntry;
         modEntry.OnGUI = OnGUI;
         HarmonyInstance = new Harmony(modEntry.Info.Id);
         HarmonyInstance.PatchAll(Assembly.GetExecutingAssembly());
-
+        //settings = Settings.Load<Settings>(modEntry);
+        modEntry.OnSaveGUI = OnSaveGUI;
         return true;
     }
 
-    public static void OnGUI(UnityModManager.ModEntry modEntry)
+    public static void OnGUI(ModEntry modEntry)
     {
-
+        GUILayout.Label("Allow Deceiver to merge spell books with all Mythic classes");
+        //GUILayout.Toggle(true, GUIContent.)
     }
-
-#if DEBUG
-    public static bool OnUnload(UnityModManager.ModEntry modEntry)
+    private static void OnSaveGUI(ModEntry modEntry)
     {
-        HarmonyInstance.UnpatchAll(modEntry.Info.Id);
-        return true;
+        //settings.Save(modEntry);
     }
-#endif
     public static bool CheckDLCStatus()
     {
         // Check if user owns DLC 6
@@ -68,7 +72,8 @@ public static class Main
                     return;
                 }
                 Initialized = true;
-
+                logger.Info("Initializing settings");
+                Settings.InitializeSettings();
                 if (!CheckDLCStatus())
                 {
                     logger.Info("User doesn't have DLC 6, no patching required");
