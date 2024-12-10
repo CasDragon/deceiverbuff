@@ -22,9 +22,7 @@ namespace deceiverbuff.Util
             ModMenu.ModMenu.AddSettings(
                 SettingsBuilder.New(RootKey, CreateString(GetKey("title"), "Deceiver Buff"))
                     .SetMod(Main.entry)
-                    .SetModDescription(CreateString("description", "Deceiver Buff, a mod for buffing Magical Deceiver"))
-                    .SetModAuthor("CascadingDragon")
-                    .AddSubHeader(CreateString(GetKey("spellbookheader"), "Spell Book Settings"))
+                    .AddAnotherSettingsGroup(GetKey("spellbookheader"), CreateString(GetKey("spellbooktitle"),"Spell Book Settings"))
                     .AddToggle(
                         Toggle.New(GetKey("mergingsettings"), defaultValue: true, CreateString("mergingSettings-toggle", "Allow you to merge Mythic spellbooks into Magical Deceiver")))
                     .AddToggle(
@@ -37,10 +35,10 @@ namespace deceiverbuff.Util
                         Toggle.New(GetKey("extendperday"), defaultValue: true, CreateString("extendPerDay-toggle", "Extend the number of casts Deceiver gets per day (currently needs cheaty per day enabled as well)")))
                     .AddToggle(
                         Toggle.New(GetKey("cheatyperday"), defaultValue: true, CreateString("cheatyPerDay-toggle", "Use your full CHA (or INT with setting on) bonus to casts per day")))
-                    .AddSubHeader(CreateString(GetKey("spelllistheader"), "Spell List Settings"))
+                    .AddAnotherSettingsGroup(GetKey("spelllistheader"), CreateString(GetKey("spelllisttitle"),"Spell List Settings"))
                     .AddToggle(
                         Toggle.New(GetKey("addnewspells"), defaultValue: true, CreateString("addNewSpells-toggle", "Add new spells (from the README) to the Deceiver spell list")))
-                    .AddSubHeader(CreateString(GetKey("metamagicHeader"), "Metamagic Settings"))
+                    .AddAnotherSettingsGroup(GetKey("metamagicHeader"), CreateString(GetKey("metamagictitle"),"Metamagic Settings"))
                     .AddToggle(
                         Toggle.New(GetKey("rodmetamagic"), defaultValue: true, CreateString("rodMetaMagic-toggle", "Allow you to use Metamagic rods with Deceiver merged spells"))));                        
         }

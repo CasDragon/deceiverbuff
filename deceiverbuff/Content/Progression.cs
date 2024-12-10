@@ -34,7 +34,7 @@ namespace deceiverbuff.Content
                 mdbook.SetCastingAttribute(StatType.Charisma);
             }
             mdbook.Configure();
-            SpellbookRefs.MagicDeceiverSpellbook.Reference.Get().GetComponent<MagicHackSpellbookComponent>().m_MaxDamageDicesPerAction = [5, 7, 10, 15, 20, 50, 50, 50, 50, 50];
+            SpellbookRefs.MagicDeceiverSpellbook.Reference.Get().GetComponent<MagicHackSpellbookComponent>().m_MaxDamageDicesPerAction = [5, 7, 10, 15, 20, 100, 100, 100, 100, 100];
             Main.logger.Info("Completed Progression Configure");
         }
         public static BlueprintSpellsTable GetSpellSlots()
