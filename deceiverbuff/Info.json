@@ -4,7 +4,7 @@
   "Author": "CascadingDragon",
   "Version": "1.2.1-nomm",
   "ManagerVersion": "0.27.11",
-  "Requirements": [ "ModMenu-2.0.0" ],
+  "Requirements": [ ],
   "AssemblyName": "deceiverbuff.dll",
   "EntryMethod": "deceiverbuff.Main.Load",
   "HomePage": "https://github.com/CasDragon/deceiverbuff",
