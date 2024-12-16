@@ -61,11 +61,6 @@
 		</PackageReference>
 		<PackageReference Include="WW-Blueprint-Core" Version="*" />
 	</ItemGroup>
-	<ItemGroup>
-	  <Reference Include="ModMenu">
-	    <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Mods\ModMenu\ModMenu.dll</HintPath>
-	  </Reference>
-	</ItemGroup>
 	<Target Name="GenerateCustomPropsFile" BeforeTargets="BeforeBuild" Condition="$(WrathInstallDir) == ''">
 		<Exec Command="findstr /C:&quot;Mono path[0]&quot; &quot;$(WrathData)\Player.log&quot;" IgnoreExitCode="true" ConsoleToMSBuild="true">
 			<Output TaskParameter="ExitCode" PropertyName="ExitCode" />

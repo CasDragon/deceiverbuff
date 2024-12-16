@@ -18,8 +18,8 @@ namespace deceiverbuff.Content
 
         public static void Configure()
         {
-            if (Settings.GetSetting<bool>("mergingsettings"))
-            {
+            //if (Settings.GetSetting<bool>("mergingsettings"))
+            //{
                 Main.logger.Info("Starting Merging Configure");
                 Main.logger.Verbose("Adding Aeon Incorporate");
                 AddAeon();
@@ -34,12 +34,12 @@ namespace deceiverbuff.Content
                 Main.logger.Verbose("Adding Trickster Incorporate");
                 AddTrickster();
                 Main.logger.Info("Completed Merging Configure");
-            }
-            else
-            {
-                Main.logger.Info("Merging disabled, configuring disabled");
-                AddDisabledBooks();
-            }
+            //}
+            //else
+            //{
+            //    Main.logger.Info("Merging disabled, configuring disabled");
+            //    AddDisabledBooks();
+            //}
         }
         public static void AddDisabledBooks()
         {

@@ -17,22 +17,22 @@ namespace deceiverbuff.Content
         {
             Main.logger.Info("Starting Progression Configure");
             SpellbookConfigurator mdbook = SpellbookConfigurator.For(SpellbookRefs.MagicDeceiverSpellbook.Reference.Get());
-            if (Settings.GetSetting<bool>("extendslots"))
-            {
+            //if (Settings.GetSetting<bool>("extendslots"))
+            //{
                 mdbook.SetSpellsPerDay(GetSpellSlots());
-            }
-            if (Settings.GetSetting<bool>("copyscrolls"))
-            {
+            //}
+            //if (Settings.GetSetting<bool>("copyscrolls"))
+            //{
                 mdbook.SetCanCopyScrolls(true);
-            }
-            if (Settings.GetSetting<bool>("useint"))
-            {
-                mdbook.SetCastingAttribute(StatType.Intelligence);
-            }
-            else
-            {
+            //}
+            //if (Settings.GetSetting<bool>("useint"))
+            //{
+            //    mdbook.SetCastingAttribute(StatType.Intelligence);
+            //}
+            //else
+            //{
                 mdbook.SetCastingAttribute(StatType.Charisma);
-            }
+            //}
             mdbook.Configure();
             SpellbookRefs.MagicDeceiverSpellbook.Reference.Get().GetComponent<MagicHackSpellbookComponent>().m_MaxDamageDicesPerAction = [5, 7, 10, 15, 20, 100, 100, 100, 100, 100];
             Main.logger.Info("Completed Progression Configure");
@@ -52,10 +52,10 @@ namespace deceiverbuff.Content
         [HarmonyPatch(nameof(Spellbook.GetSpellsPerDay)), HarmonyPostfix]
         public static void GetSpellsPerDay_Patch(ref int __result, Spellbook __instance)
         {
-            if (Settings.GetSetting<bool>("extendperday"))
-            {
-                if (Settings.GetSetting<bool>("cheatyperday"))
-                {
+            //if (Settings.GetSetting<bool>("extendperday"))
+            //{
+                //if (Settings.GetSetting<bool>("cheatyperday"))
+                //{
                     try
                     {
                         if (__instance.Blueprint.GetComponent<MagicHackSpellbookComponent>() != null)
@@ -68,8 +68,8 @@ namespace deceiverbuff.Content
                     {
                         //Main.logger.Error("Error when patching SpellsPerDay - \n" + e);
                     }
-                }
-            }
+                //}
+            //}
         }
     }
 }

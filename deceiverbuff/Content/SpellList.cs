@@ -18,8 +18,8 @@ namespace deceiverbuff.Content
             Main.logger.Info("Starting Spelllist Configure");
             // todo
             // Black Tentacles, Infernal Healing
-            if (Settings.GetSetting<bool>("addnewspells"))
-            {
+            //if (Settings.GetSetting<bool>("addnewspells"))
+            //{
                 AddToList(6, AbilityRefs.HellfireRay.Reference.Get());
                 AddToList(1, AbilityRefs.MagicMissile.Reference.Get());
                 AddToList(9, AbilityRefs.EnergyDrain.Reference.Get());
@@ -51,7 +51,7 @@ namespace deceiverbuff.Content
                 AddToList(7, AbilityRefs.FormOfTheDragonIIRed.Reference.Get());
                 AddToList(8, AbilityRefs.FormOfTheDragonIIIGold.Reference.Get());
                 AddToList(8, AbilityRefs.FormOfTheDragonIIIRed.Reference.Get());
-            }
+            //}
             Main.logger.Info("Completed Spelllist Configure");
         }
         public static void  AddToList(int level, BlueprintAbility spell)
@@ -68,8 +68,8 @@ namespace deceiverbuff.Content
             [HarmonyPatch(nameof(CopyScroll.CanCopySpell)), HarmonyPostfix]
             static void DeceiverScollPatch(ref bool __result, BlueprintAbility spell, Spellbook spellbook)
             {
-                if (Settings.GetSetting<bool>("copyscrolls"))
-                {
+                //if (Settings.GetSetting<bool>("copyscrolls"))
+                //{
                     try
                     {
                         Main.logger.Info("Patching CanCopyScroll");
@@ -82,7 +82,7 @@ namespace deceiverbuff.Content
                     {
                         //Main.logger.Error("Error while patching CanCopyScroll -\n " + e);
                     }
-                }
+                //}
             }
         }
         [HarmonyPatch(typeof(BlueprintSpellList))]
@@ -91,8 +91,8 @@ namespace deceiverbuff.Content
             [HarmonyPatch(nameof(BlueprintSpellList.GetLevel)), HarmonyPostfix]
             static void DeceiverLearnScroll_Patch(ref int __result, BlueprintSpellList __instance, BlueprintAbility spell)
             {
-                if (Settings.GetSetting<bool>("copyscrolls"))
-                {
+                //if (Settings.GetSetting<bool>("copyscrolls"))
+                //{
                     try
                     {
                         if (__result == -1)
@@ -104,7 +104,7 @@ namespace deceiverbuff.Content
                     {
                         //Main.logger.Error("Error while patching GetLevel -\n" + e);
                     }
-                }
+                //}
             }
         }
     }

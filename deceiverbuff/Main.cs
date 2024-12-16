@@ -73,7 +73,7 @@ public static class Main
                 }
                 Initialized = true;
                 logger.Info("Initializing settings");
-                Settings.InitializeSettings();
+                //Settings.InitializeSettings();
                 if (!CheckDLCStatus())
                 {
                     logger.Info("User doesn't have DLC 6, no patching required");

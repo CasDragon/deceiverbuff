@@ -49,8 +49,8 @@ namespace deceiverbuff.Content
         [HarmonyPostfix]
         public static void IsSuitableAbility_Patch(ref bool __result, AbilityData ability)
         {
-            if (Settings.GetSetting<bool>("rodmetamagic"))
-            {
+            //if (Settings.GetSetting<bool>("rodmetamagic"))
+            //{
                 Main.logger.Verbose("Patching MetamagicRodMechanics.IsSuitableAbility");
                 try
                 {
@@ -61,7 +61,7 @@ namespace deceiverbuff.Content
                 {
                     Main.logger.Error("Error when patching IsSuitableAbility - \n" + e);
                 }
-            }
+            //}
         }
     }
 }
