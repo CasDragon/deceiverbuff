@@ -15,7 +15,7 @@ namespace deceiverbuff.Content
     {
         public static void Configure()
         {
-            Main.logger.Info("Starting Spelllist Configure");
+            Main.log.Log("Starting Spelllist Configure");
             // todo
             // Black Tentacles, Infernal Healing
             if (Settings.GetSetting<bool>("addnewspells"))
@@ -52,11 +52,11 @@ namespace deceiverbuff.Content
                 AddToList(8, AbilityRefs.FormOfTheDragonIIIGold.Reference.Get());
                 AddToList(8, AbilityRefs.FormOfTheDragonIIIRed.Reference.Get());
             }
-            Main.logger.Info("Completed Spelllist Configure");
+            Main.log.Log("Completed Spelllist Configure");
         }
         public static void  AddToList(int level, BlueprintAbility spell)
         {
-            Main.logger.Verbose("Adding" + spell.NameSafe() + "to Deceiver");
+            Main.log.Log("Adding" + spell.NameSafe() + "to Deceiver");
             AbilityConfigurator.For(spell)
                 .AddToSpellList(level, SpellListRefs.MagicDeceiverSpellList.Reference.Get())
                 .Configure();
@@ -72,7 +72,7 @@ namespace deceiverbuff.Content
                 {
                     try
                     {
-                        Main.logger.Info("Patching CanCopyScroll");
+                        //Main.log.Log("Patching CanCopyScroll");
                         if (spellbook.Blueprint.AssetGuid == "587066af76a74f47a904bb017697ba08")
                         {
                             __result = !spellbook.IsKnown(spell);
@@ -80,7 +80,7 @@ namespace deceiverbuff.Content
                     }
                     catch (Exception e)
                     {
-                        //Main.logger.Error("Error while patching CanCopyScroll -\n " + e);
+                        //Main.log.Error("Error while patching CanCopyScroll -\n " + e);
                     }
                 }
             }
@@ -102,7 +102,7 @@ namespace deceiverbuff.Content
                     }
                     catch (Exception e)
                     {
-                        //Main.logger.Error("Error while patching GetLevel -\n" + e);
+                        //Main.log.Error("Error while patching GetLevel -\n" + e);
                     }
                 }
             }

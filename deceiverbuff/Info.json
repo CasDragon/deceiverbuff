@@ -2,7 +2,7 @@
   "Id": "deceiverbuff",
   "DisplayName": "Deceiver Buffs",
   "Author": "CascadingDragon",
-  "Version": "1.2.1",
+  "Version": "1.2.3",
   "ManagerVersion": "0.27.11",
   "Requirements": [ "ModMenu-2.0.0" ],
   "AssemblyName": "deceiverbuff.dll",

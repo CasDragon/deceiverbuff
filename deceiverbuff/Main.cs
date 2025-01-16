@@ -23,32 +23,27 @@ namespace deceiverbuff;
 public static class Main
 {
     internal static Harmony HarmonyInstance;
-    public static readonly LogWrapper logger = LogWrapper.Get("deceiverbuff");
+    //public static readonly LogWrapper logger = LogWrapper.Get("deceiverbuff");
+    internal static UnityModManager.ModEntry.ModLogger log;
     internal static ModEntry entry;
-    //public static Settings settings;
 
     public static bool Load(ModEntry modEntry)
     {
-#if DEBUG
-        modEntry.OnUnload = OnUnload;
-#endif
+        log = modEntry.Logger;
         entry = modEntry;
         modEntry.OnGUI = OnGUI;
         HarmonyInstance = new Harmony(modEntry.Info.Id);
         HarmonyInstance.PatchAll(Assembly.GetExecutingAssembly());
-        //settings = Settings.Load<Settings>(modEntry);
         modEntry.OnSaveGUI = OnSaveGUI;
         return true;
     }
 
     public static void OnGUI(ModEntry modEntry)
     {
-        GUILayout.Label("Allow Deceiver to merge spell books with all Mythic classes");
-        //GUILayout.Toggle(true, GUIContent.)
+
     }
     private static void OnSaveGUI(ModEntry modEntry)
     {
-        //settings.Save(modEntry);
     }
     public static bool CheckDLCStatus()
     {
@@ -68,30 +63,30 @@ public static class Main
             {
                 if (Initialized)
                 {
-                    logger.Info("Already initialized blueprints cache.");
+                    log.Log("Already initialized blueprints cache.");
                     return;
                 }
                 Initialized = true;
-                logger.Info("Initializing settings");
+                log.Log("Initializing settings");
                 Settings.InitializeSettings();
                 if (!CheckDLCStatus())
                 {
-                    logger.Info("User doesn't have DLC 6, no patching required");
+                    log.Log("User doesn't have DLC 6, no patching required");
                     return;
                 }
                 else
                 {
-                    logger.Info("Patching Deceiver progression.");
+                    log.Log("Patching Deceiver progression.");
                     Progression.Configure();
-                    logger.Info("Patching Deceiver Merging.");
+                    log.Log("Patching Deceiver Merging.");
                     Merging.Configure();
-                    logger.Info("Patching Deceiver Spell List.");
+                    log.Log("Patching Deceiver Spell List.");
                     SpellList.Configure();
                 }
             }
             catch (Exception e)
             {
-                logger.Error("Failed to initialize." + e);
+                log.Error("Failed to initialize." + e);
             }
         }
     }

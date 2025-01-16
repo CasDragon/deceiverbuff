@@ -50,7 +50,7 @@ namespace deceiverbuff.Util
             }
             catch (Exception ex)
             {
-                Main.logger.Error(ex.ToString());
+                Main.log.Error(ex.ToString());
                 return default(T);
             }
         }
@@ -79,7 +79,7 @@ namespace deceiverbuff.Util
             var strings = LocalizationManager.CurrentPack?.m_Strings;
             if (strings!.TryGetValue(key, out var oldValue) && value != oldValue.Text)
             {
-                Main.logger.Info($"Info: duplicate localized string `{key}`, different text.");
+                Main.log.Log($"Info: duplicate localized string `{key}`, different text.");
             }
             var sE = new Kingmaker.Localization.LocalizationPack.StringEntry();
             sE.Text = value;

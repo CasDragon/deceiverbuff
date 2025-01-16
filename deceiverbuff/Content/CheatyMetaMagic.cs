@@ -51,7 +51,7 @@ namespace deceiverbuff.Content
         {
             if (Settings.GetSetting<bool>("rodmetamagic"))
             {
-                Main.logger.Verbose("Patching MetamagicRodMechanics.IsSuitableAbility");
+                //Main.log.Log("Patching MetamagicRodMechanics.IsSuitableAbility");
                 try
                 {
                     if (ability.MagicHackData is not null)
@@ -59,7 +59,7 @@ namespace deceiverbuff.Content
                 }
                 catch (Exception e)
                 {
-                    Main.logger.Error("Error when patching IsSuitableAbility - \n" + e);
+                    Main.log.Error("Error when patching IsSuitableAbility - \n" + e);
                 }
             }
         }

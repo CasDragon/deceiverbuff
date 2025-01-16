@@ -20,24 +20,24 @@ namespace deceiverbuff.Content
         {
             if (Settings.GetSetting<bool>("mergingsettings"))
             {
-                Main.logger.Info("Starting Merging Configure");
-                Main.logger.Verbose("Adding Aeon Incorporate");
+                Main.log.Log("Starting Merging Configure");
+                Main.log.Log("Adding Aeon Incorporate");
                 AddAeon();
-                Main.logger.Verbose("Adding Angel Incorporate");
+                Main.log.Log("Adding Angel Incorporate");
                 AddAngel();
-                Main.logger.Verbose("Adding Azata Incorporate");
+                Main.log.Log("Adding Azata Incorporate");
                 AddAzata();
-                Main.logger.Verbose("Adding Demon Incorporate");
+                Main.log.Log("Adding Demon Incorporate");
                 AddDemon();
-                Main.logger.Verbose("Adding Lich Incorporate");
+                Main.log.Log("Adding Lich Incorporate");
                 AddLich();
-                Main.logger.Verbose("Adding Trickster Incorporate");
+                Main.log.Log("Adding Trickster Incorporate");
                 AddTrickster();
-                Main.logger.Info("Completed Merging Configure");
+                Main.log.Log("Completed Merging Configure");
             }
             else
             {
-                Main.logger.Info("Merging disabled, configuring disabled");
+                Main.log.Log("Merging disabled, configuring disabled");
                 AddDisabledBooks();
             }
         }

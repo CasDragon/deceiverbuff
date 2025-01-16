@@ -15,7 +15,7 @@ namespace deceiverbuff.Content
         private const string SpellsPerDay = "Deceiver.SpellsPerDay";
         public static void Configure()
         {
-            Main.logger.Info("Starting Progression Configure");
+            Main.log.Log("Starting Progression Configure");
             SpellbookConfigurator mdbook = SpellbookConfigurator.For(SpellbookRefs.MagicDeceiverSpellbook.Reference.Get());
             if (Settings.GetSetting<bool>("extendslots"))
             {
@@ -35,7 +35,7 @@ namespace deceiverbuff.Content
             }
             mdbook.Configure();
             SpellbookRefs.MagicDeceiverSpellbook.Reference.Get().GetComponent<MagicHackSpellbookComponent>().m_MaxDamageDicesPerAction = [5, 7, 10, 15, 20, 100, 100, 100, 100, 100];
-            Main.logger.Info("Completed Progression Configure");
+            Main.log.Log("Completed Progression Configure");
         }
         public static BlueprintSpellsTable GetSpellSlots()
         {
@@ -66,7 +66,7 @@ namespace deceiverbuff.Content
                     }
                     catch (Exception e)
                     {
-                        //Main.logger.Error("Error when patching SpellsPerDay - \n" + e);
+                        //Main.log.Error("Error when patching SpellsPerDay - \n" + e);
                     }
                 }
             }
