@@ -82,6 +82,8 @@ public static class Main
                     Merging.Configure();
                     log.Log("Patching Deceiver Spell List.");
                     SpellList.Configure();
+                    log.Log("Patching Chrono ability");
+                    Chrono.Configure();
                 }
             }
             catch (Exception e)
