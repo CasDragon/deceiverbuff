@@ -15,6 +15,8 @@ namespace deceiverbuff.Content
         private const string DemonIncorporateDesc = "Demon.IncorprateDisc";
         private const string TricksterIncorporateName = "Trickster.IncorprateName";
         private const string TricksterIncorporateDesc = "Trickster.IncorprateDisc";
+        private const string GDIncorporateName = "GD.IncorprateName";
+        private const string GDIncorporateDesc = "GD.IncorprateDisc";
 
         public static void Configure()
         {
@@ -33,6 +35,8 @@ namespace deceiverbuff.Content
                 AddLich();
                 Main.log.Log("Adding Trickster Incorporate");
                 AddTrickster();
+                Main.log.Log("Adding GD Incorporate");
+                AddGoldDragon();
                 Main.log.Log("Completed Merging Configure");
             }
             else
@@ -47,6 +51,7 @@ namespace deceiverbuff.Content
             FeatureSelectMythicSpellbookConfigurator.New(AzataIncorporateName, Guids.AzataSpellbookNew).Configure();
             FeatureSelectMythicSpellbookConfigurator.New(DemonIncorporateName, Guids.DemonSpellbookNew).Configure();
             FeatureSelectMythicSpellbookConfigurator.New(TricksterIncorporateName, Guids.TricksterSpellbookNew).Configure();
+            FeatureSelectMythicSpellbookConfigurator.New(GDIncorporateName, Guids.GDSpellbookNew).Configure();
         }
         public static void AddAngel()
         {
@@ -113,6 +118,20 @@ namespace deceiverbuff.Content
                 .Configure();
 
             ProgressionConfigurator.For(ProgressionRefs.TricksterProgression.Reference.Get())
+                .AddToLevelEntry(1, thing)
+                .Configure();
+        }
+        public static void AddGoldDragon()
+        {
+            var thing = FeatureSelectMythicSpellbookConfigurator.New(GDIncorporateName, Guids.GDSpellbookNew)
+                .AddToAllowedSpellbooks(SpellbookRefs.MagicDeceiverSpellbook.Reference.Get())
+                .SetDisplayName(GDIncorporateName)
+                .SetDescription(GDIncorporateDesc)
+                .SetSpellKnownForSpontaneous(SpellsTableRefs.MythicSpontaneousSpellsKnownTable.Reference.Get())
+                .SetMythicSpellList(SpellListRefs.GoldDragonSpellList.Reference.Get())
+                .Configure();
+
+            ProgressionConfigurator.For(ProgressionRefs.GoldenDragonProgression.Reference.Get())
                 .AddToLevelEntry(1, thing)
                 .Configure();
         }
