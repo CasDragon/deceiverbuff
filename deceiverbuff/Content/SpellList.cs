@@ -47,6 +47,7 @@ namespace deceiverbuff.Content
                 AddToList(0, AbilityRefs.AcidSplash.Reference.Get());
                 AddToList(0, AbilityRefs.RayOfFrost.Reference.Get());
                 AddToList(0, AbilityRefs.Jolt.Reference.Get());
+                AddToList(0, AbilityRefs.Ignition.Reference.Get());
                 AddToList(7, AbilityRefs.FormOfTheDragonIIGold.Reference.Get());
                 AddToList(7, AbilityRefs.FormOfTheDragonIIRed.Reference.Get());
                 AddToList(8, AbilityRefs.FormOfTheDragonIIIGold.Reference.Get());
