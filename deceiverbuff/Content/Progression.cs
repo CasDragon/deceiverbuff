@@ -1,12 +1,13 @@
-﻿using BlueprintCore.Blueprints.Configurators.Classes.Spells;
+﻿using System;
+using BlueprintCore.Blueprints.Configurators.Classes.Spells;
 using BlueprintCore.Blueprints.References;
-using Kingmaker.Blueprints.Classes.Spells;
 using deceiverbuff.Util;
-using System;
+using HarmonyLib;
 using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic;
-using HarmonyLib;
+using static Kingmaker.GameModes.GameModeType;
 
 namespace deceiverbuff.Content
 {
@@ -50,11 +51,26 @@ namespace deceiverbuff.Content
     internal class Spellbook_Deceiver_Patch
     {
         [HarmonyPatch(nameof(Spellbook.GetSpellsPerDay)), HarmonyPostfix]
-        public static void GetSpellsPerDay_Patch(ref int __result, Spellbook __instance)
+        public static void GetSpellsPerDay_Patch(ref int __result, Spellbook __instance, int spellLevel)
         {
             if (Settings.GetSetting<bool>("extendperday"))
             {
-                if (Settings.GetSetting<bool>("cheatyperday"))
+                if (Settings.GetSetting<bool>("supercheatyperday"))
+                {
+                    try
+                    {
+                        if (__instance.Blueprint.GetComponent<MagicHackSpellbookComponent>() != null)
+                        {
+                            ModifiableValueAttributeStat modifiableValueAttributeStat = __instance.Owner.Stats.GetStat(__instance.Blueprint.CastingAttribute) as ModifiableValueAttributeStat;
+                            __result += modifiableValueAttributeStat.BonusWithoutTemp;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        //Main.log.Error("Error when patching SpellsPerDay - \n" + e);
+                    }
+                }
+                else if (Settings.GetSetting<bool>("cheatyperday"))
                 {
                     try
                     {
@@ -62,6 +78,28 @@ namespace deceiverbuff.Content
                         {
                             ModifiableValueAttributeStat modifiableValueAttributeStat = __instance.Owner.Stats.GetStat(__instance.Blueprint.CastingAttribute) as ModifiableValueAttributeStat;
                             __result += modifiableValueAttributeStat.PermanentBonus;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        //Main.log.Error("Error when patching SpellsPerDay - \n" + e);
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        if (__instance.Blueprint.GetComponent<MagicHackSpellbookComponent>() != null)
+                        {
+                            ModifiableValueAttributeStat modifiableValueAttributeStat = __instance.Owner.Stats.GetStat(__instance.Blueprint.CastingAttribute) as ModifiableValueAttributeStat;
+                            int num = 0;
+                            int num2 = (__instance.Owner.IsPlayerFaction ? ((modifiableValueAttributeStat.CalculatePermanentValueWithoutTempBuffs() - 10) / 2 - spellLevel) : ((modifiableValueAttributeStat.BaseValue - 10) / 2 - spellLevel));
+                            if (num2 >= 0 && spellLevel > 0)
+                            {
+                                int num3 = num2 / 4 + 1;
+                                num += num3;
+                            }
+                            __result += num; 
                         }
                     }
                     catch (Exception e)

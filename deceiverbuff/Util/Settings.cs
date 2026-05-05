@@ -32,9 +32,11 @@ namespace deceiverbuff.Util
                     .AddToggle(
                         Toggle.New(GetKey("useint"), defaultValue: false, CreateString("useInt-toggle", "Changes the Deceiver spellbook from CHA to INT")))
                     .AddToggle(
-                        Toggle.New(GetKey("extendperday"), defaultValue: true, CreateString("extendPerDay-toggle", "Extend the number of casts Deceiver gets per day (currently needs cheaty per day enabled as well)")))
+                        Toggle.New(GetKey("extendperday"), defaultValue: true, CreateString("extendPerDay-toggle", "Extend the number of casts Deceiver gets per day")))
                     .AddToggle(
-                        Toggle.New(GetKey("cheatyperday"), defaultValue: true, CreateString("cheatyPerDay-toggle", "Use your full CHA (or INT with setting on) bonus to casts per day")))
+                        Toggle.New(GetKey("cheatyperday"), defaultValue: true, CreateString("cheatyPerDay-toggle", "Use your full CHA (or INT with setting on) permanent bonus to casts per day")))
+                    .AddToggle(
+                        Toggle.New(GetKey("supercheatyperday"), defaultValue: false, CreateString("supercheatyperday-toggle", "Use your full CHA (or INT with setting on) bonus to casts per day")))
                     .AddAnotherSettingsGroup(GetKey("spelllistheader"), CreateString(GetKey("spelllisttitle"),"Spell List Settings"))
                     .AddToggle(
                         Toggle.New(GetKey("addnewspells"), defaultValue: true, CreateString("addNewSpells-toggle", "Add new spells (from the README) to the Deceiver spell list")))
